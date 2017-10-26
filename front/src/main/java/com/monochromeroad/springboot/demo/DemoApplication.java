@@ -25,7 +25,8 @@ public class DemoApplication {
 
         @RequestMapping("/")
         String greeting() {
-            return restOperations.getForObject("http://greeting:8080/greeting", String.class);
+            Greeting greeting = restOperations.getForObject("http://greeting:8080/greeting", Greeting.class);
+            return greeting.getContent();
         }
     }
 }
