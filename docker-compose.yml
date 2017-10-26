@@ -6,3 +6,7 @@ services:
     - "8080:8080"
     volumes:
     - ./front:/home/app/front
+  greeting:
+    build: ./greeting
+    volumes:
+    - ./greeting:/home/app/greeting

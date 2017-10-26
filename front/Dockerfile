@@ -1,12 +1,18 @@
 FROM openjdk:8-jdk-alpine
 
-COPY . /home/app/front
+COPY ./gradlew /home/app/front/gradlew
+COPY ./gradle /home/app/front/gradle
 
 RUN adduser -S app && chown -R app /home/app/front
 
 USER app
 
 WORKDIR /home/app/front
+
+RUN ./gradlew build
+
+COPY . /home/app/front
+
 RUN ./gradlew build
 
 EXPOSE 8080
